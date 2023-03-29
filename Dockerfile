@@ -12,12 +12,15 @@ RUN apt-get -y install git
 RUN apt-get -y install wget
 RUN apt-get -y install make
 
-#
+# install dynamorio project (for .so build)
 RUN git clone https://github.com/DynamoRIO/dynamorio.git
+
+# install dynamorio release (for bin64/drrun call)
 RUN wget https://github.com/DynamoRIO/dynamorio/releases/download/release_9.0.1/DynamoRIO-Linux-9.0.1.tar.gz
 RUN tar -xvzf DynamoRIO-Linux-9.0.1.tar.gz
 
-RUN git clone
+# some repo for testing installation
+RUN git clone https://github.com/fmtlib/fmt.git
 
 COPY . .
 
