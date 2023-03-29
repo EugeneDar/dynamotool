@@ -2,5 +2,6 @@
 
 Quick start
 
-    $ sudo docker run app
     $ sudo docker build -t app .
+    $ sudo docker run app
+    
