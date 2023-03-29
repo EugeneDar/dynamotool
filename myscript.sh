@@ -14,12 +14,17 @@ make my2
 # build binary for testing
 cd /
 g++ -O0 -o app /main.cpp
+
+# print binary disassembler
 #objdump -D /app > /disasm && cat /disasm
 
-# run profiler
+# run my profiler
+#cd /DynamoRIO-Linux-9.0.1
+#bin64/drrun -c /dynamorio/build/bin/libmy2.so -only_from_app -- /app
+
+# run their profiler
 cd /DynamoRIO-Linux-9.0.1
-bin64/drrun -c /dynamorio/build/bin/libmy2.so -only_from_app -- /app
-#bin64/drrun -c samples/bin64/libinstrace_simple.so -only_from_app -- /app
-#cat /DynamoRIO-Linux-9.0.1/samples/bin64/instrace.app.* | grep "mul" | wc -l
+bin64/drrun -c samples/bin64/libinstrace_simple.so -only_from_app -- /app
+cat /DynamoRIO-Linux-9.0.1/samples/bin64/instrace.app.* | grep "push" | wc -l
 
 
