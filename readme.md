@@ -35,4 +35,8 @@ Therefore, to count the number of allocations on the stack, it is sufficient to 
 
 ## Limitations
 
-This tool does not keep track of allocations that occurred during interrupts, but they are a very small fraction of allocations.
+Although allocations may occur during interrupts, they are a relatively insignificant portion of all allocations, and as such, this tool does not track them.
+
+## Paradigm
+
+There are various approaches to defining an allocation, but we choose to define it in terms of a "hardware" operation. Essentially, we consider it from the perspective of modifying a pointer to a stack. For instance, if the compiler anticipates the creation of three fixed-sized variables, it will shift esp only once, and we regard this as a single allocation.
