@@ -21,6 +21,14 @@ If you want to profile more repositories, add their installation to `Dockerfile`
 
 In order to count allocations on a stack, it is necessary to keep track of how the stack pointer is being modified. The stack pointer (rsp) is used to allocate and deallocate memory on the stack.
 
-Push instructions decrement the stack pointer (rsp) by the size of the pushed value, effectively allocating space on the stack. Call instructions push the current value of the instruction pointer (rip) onto the stack, also decrementing the stack pointer by 8 bytes.
+in general, the following x86 assembly instructions are commonly used to allocate space on the stack:
+
+`sub esp, N`: This instruction subtracts a constant value N from the stack pointer (ESP) to allocate space on the stack.
+
+`push eax`: This instruction pushes the contents of a register (such as EAX) onto the stack, effectively allocating space on the stack.
+
+`mov [esp], eax`: This instruction moves the contents of a register (such as EAX) into a location on the stack, effectively allocating space on the stack. Note, however, that this instruction does not allocate memory as such, but uses existing memory.
+
+`call foo`: push the current value of the instruction pointer (rip) onto the stack, also decrementing the stack pointer by 8 bytes.
 
 Therefore, to count the number of allocations on the stack, it is sufficient to count the number of sub instructions that modify the stack pointer (rsp), push instructions that allocate memory on the stack, and call instructions that push the return address onto the stack. By doing so, one can accurately estimate the total amount of memory that is being allocated on the stack.
