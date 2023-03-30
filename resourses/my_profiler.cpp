@@ -100,6 +100,9 @@ static bool is_allocation_instruction(instr_t *instr) {
     if (instr_get_opcode(instr) == OP_sub && opnd_is_reg(instr_get_dst(instr, 0)) && opnd_get_reg(instr_get_dst(instr, 0)) == DR_REG_RSP) {
         return true;
     }
+    if (instr_is_call(instr)) {
+        return true;
+    }
     return false;
 }
 
