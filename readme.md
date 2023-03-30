@@ -32,3 +32,7 @@ in general, the following x86 assembly instructions are commonly used to allocat
 `call foo`: push the current value of the instruction pointer (rip) onto the stack, also decrementing the stack pointer by 8 bytes.
 
 Therefore, to count the number of allocations on the stack, it is sufficient to count the number of sub instructions that modify the stack pointer (rsp), push instructions that allocate memory on the stack, and call instructions that push the return address onto the stack. By doing so, one can accurately estimate the total amount of memory that is being allocated on the stack.
+
+## Limitations
+
+This tool does not keep track of allocations that occurred during interrupts, but they are a very small fraction of allocations.
