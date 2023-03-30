@@ -1,7 +1,9 @@
+void foo() {
+
+}
+
 int main () {
-    int n = 100'000;
-    int counter = 0;
-    for (int i = 0;i < n;++i) {
-        counter *= 49;
+    for (int i = 0; i < 10000; ++i) {
+        foo();
     }
 }
