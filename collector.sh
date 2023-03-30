@@ -15,11 +15,7 @@ g++ -O0 -o /materials/app /examples/sample.cpp
 
 
 # build tests for 'fmt' repo
-cd /fmt && mkdir build && cd build
-cmake ..
-make
-cp /fmt/build/bin/* /materials
-
-
-
-# build tests for '...' repo
+#cd /fmt && mkdir build && cd build
+#cmake ..
+#make
+#cp /fmt/build/bin/* /materials
