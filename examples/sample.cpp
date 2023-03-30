@@ -1,5 +1,10 @@
-void foo() {
+void bar() {
 
+}
+
+void foo() {
+    int a = 1;
+    bar();
 }
 
 int main () {
