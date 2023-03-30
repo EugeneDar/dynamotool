@@ -83,7 +83,7 @@ event_exit(void)
     char msg[512];
     int len;
     len = dr_snprintf(msg, sizeof(msg) / sizeof(msg[0]),
-                      "Instrumentation results: %llu push instructions executed\n",
+                      "Instrumentation results: %llu stack allocation instructions executed\n",
                       global_count);
     DR_ASSERT(len > 0);
     NULL_TERMINATE(msg);
