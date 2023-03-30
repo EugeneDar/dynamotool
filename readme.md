@@ -27,7 +27,7 @@ in general, the following x86 assembly instructions are commonly used to allocat
 
 `push eax`: This instruction pushes the contents of a register (such as EAX) onto the stack, effectively allocating space on the stack.
 
-`mov [esp], eax`: This instruction moves the contents of a register (such as EAX) into a location on the stack, effectively allocating space on the stack. Note, however, that this instruction does not allocate memory as such, but uses existing memory.
+`mov [ebp], eax`: This instruction moves the contents of a register (such as EAX) into a location on the stack, effectively allocating space on the stack. Note, however, that this instruction does not allocate memory as such, but uses existing memory.
 
 `call foo`: push the current value of the instruction pointer (rip) onto the stack, also decrementing the stack pointer by 8 bytes.
 
