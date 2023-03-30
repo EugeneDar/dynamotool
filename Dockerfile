@@ -25,6 +25,3 @@ RUN git clone https://github.com/fmtlib/fmt.git
 COPY . .
 
 ENTRYPOINT ["bash", "./run.sh"]
-
-#sudo docker run app
-#sudo docker build -t app .

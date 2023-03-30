@@ -17,37 +17,16 @@ make my_profiler
 
 
 
-# build binary for testing
-cd /
-g++ -O0 -o app /examples/main.cpp
-
-# print binary disassembler
-#objdump -D /app > /disasm && cat /disasm
+# build tests
+bash /collector.sh
 
 
-
-# run my profiler
-cd /DynamoRIO-Linux-9.0.1
-bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- /app
-
-
-
-# run their profiler (this section just for testing)
-#cd /DynamoRIO-Linux-9.0.1
-#bin64/drrun -c samples/bin64/libinscount.so -only_from_app -- /app
-
-
-# build tests from downloaded repo
-#cd /fmt && mkdir build && cd build
-#cmake ..
-#make
 
 # run profiler for built tests
-#cd /DynamoRIO-Linux-9.0.1
-#FILES="/fmt/build/bin/*"
-#for f in $FILES
-#do
-#  echo "Processing $f"
-#  bin64/drrun -c samples/bin64/libinstrace_simple.so -only_from_app -- "$f"
-#done
-#cat /DynamoRIO-Linux-9.0.1/samples/bin64/instrace.* | grep "push" | wc -l
+cd /DynamoRIO-Linux-9.0.1
+FILES="/materials/*"
+for f in $FILES
+do
+  echo "Profiling $f"
+  bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$f"
+done
