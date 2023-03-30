@@ -4,9 +4,9 @@ DYNAMORIO_HOME=/DynamoRIO-Linux-9.0.1
 
 
 # copying files to release
-cp /my_profiler.cpp $DYNAMORIO_HOME/samples
+cp /resourses/my_profiler.cpp $DYNAMORIO_HOME/samples
 rm $DYNAMORIO_HOME/samples/CMakeLists.txt
-cp /CMakeLists.txt $DYNAMORIO_HOME/samples
+cp /resourses/CMakeLists.txt $DYNAMORIO_HOME/samples
 
 
 
@@ -19,7 +19,7 @@ make my_profiler
 
 # build binary for testing
 cd /
-g++ -O0 -o app /main.cpp
+g++ -O0 -o app /examples/main.cpp
 
 # print binary disassembler
 #objdump -D /app > /disasm && cat /disasm
