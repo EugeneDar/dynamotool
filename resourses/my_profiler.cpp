@@ -93,8 +93,14 @@ event_exit(void)
 }
 
 static bool is_allocation_instruction(instr_t *instr) {
-    return instr_get_opcode(instr) == OP_push || instr_get_opcode(instr) == OP_pushf
-        || instr_get_opcode(instr) == OP_push_imm || instr_get_opcode(instr) == OP_pusha;
+    if (instr_get_opcode(instr) == OP_push || instr_get_opcode(instr) == OP_pushf
+        || instr_get_opcode(instr) == OP_push_imm || instr_get_opcode(instr) == OP_pusha) {
+        return true;
+    }
+    if (instr_get_opcode(instr) == OP_sub && opnd_is_reg(instr_get_dst(instr, 0)) && opnd_get_reg(instr_get_dst(instr, 0)) == DR_REG_RSP) {
+        return true;
+    }
+    return false;
 }
 
 static dr_emit_flags_t
