@@ -29,4 +29,7 @@ for f in $FILES
 do
   echo "Profiling $f"
   bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$f"
+
+  # this line profiles binary for heap allocations, so it's optional
+  valgrind "$f"
 done
