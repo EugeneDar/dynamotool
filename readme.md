@@ -9,6 +9,13 @@
     $ sudo docker build -t app .
     $ sudo docker run app
 
+This code will profile `sample.cpp` file.
+
+You can also uncomment last section (with `fmt` repository) in `collector.sh` and repeat previous steps.
+
+## More tests
+
+If you want to profile more repositories, add their installation to `Dockerfile`. In `collector.sh` implement test builds, and put the resulting binary files in the `/materials` directory.
 
 ## Explanation
 
