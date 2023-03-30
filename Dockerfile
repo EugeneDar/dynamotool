@@ -19,7 +19,7 @@ RUN git clone https://github.com/DynamoRIO/dynamorio.git
 RUN wget https://github.com/DynamoRIO/dynamorio/releases/download/release_9.0.1/DynamoRIO-Linux-9.0.1.tar.gz
 RUN tar -xvzf DynamoRIO-Linux-9.0.1.tar.gz
 
-# some repo for testing installation
+# install some repo for testing installation
 RUN git clone https://github.com/fmtlib/fmt.git
 
 COPY . .

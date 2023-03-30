@@ -9,7 +9,7 @@ cd / && mkdir /materials
 
 # build your sample code
 cd /
-g++ -O0 -o /materials/app /examples/main.cpp
+g++ -O0 -o /materials/app /examples/sample.cpp
 #objdump -D /materials/app > /disasm && cat /disasm
 
 
