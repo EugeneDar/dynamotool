@@ -245,7 +245,7 @@ if (NOT WIN32)
 endif (NOT WIN32)
 add_sample_client(inline      "inline.c"        "drmgr;drcontainers")
 add_sample_client(inscount    "inscount.cpp"    "drmgr;droption")
-add_sample_client(my2    "my2.cpp"    "drmgr;droption") # my lib
+add_sample_client(my_profiler    "my_profiler.cpp"    "drmgr;droption") # my lib
 add_sample_client(opcodes     "opcodes.c"       "drmgr;drreg;drx")
 add_sample_client(stl_test    "stl_test.cpp"    "")
 

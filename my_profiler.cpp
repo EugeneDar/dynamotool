@@ -92,8 +92,9 @@ event_exit(void)
     drmgr_exit();
 }
 
-static bool is_allocation_instruction (instr_t *instr){
-    return instr_get_opcode(instr) == OP_push || instr_get_opcode(instr) == OP_pushf || instr_get_opcode(instr) == OP_push_imm || instr_get_opcode(instr) == OP_pusha;
+static bool is_allocation_instruction(instr_t *instr) {
+    return instr_get_opcode(instr) == OP_push || instr_get_opcode(instr) == OP_pushf
+        || instr_get_opcode(instr) == OP_push_imm || instr_get_opcode(instr) == OP_pusha;
 }
 
 static dr_emit_flags_t
