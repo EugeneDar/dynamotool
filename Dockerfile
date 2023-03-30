@@ -11,6 +11,7 @@ RUN apt -yq install cmake g++ libprotobuf-dev protobuf-compiler # may be apt-get
 RUN apt-get -y install git
 RUN apt-get -y install wget
 RUN apt-get -y install make
+RUN apt-get -y install valgrind
 
 # install dynamorio project (for .so build)
 RUN git clone https://github.com/DynamoRIO/dynamorio.git
