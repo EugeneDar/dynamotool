@@ -23,13 +23,14 @@ bash /collector.sh
 
 
 # run profiler for built tests
+echo "" > /logs/results_output.txt
 cd /DynamoRIO-Linux-9.0.1
 FILES="/materials/*"
 for f in $FILES
 do
   echo "Profiling $f"
-  bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$f"
+  bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$f" >> /logs/results_output.txt
 
   # this line profiles binary for heap allocations, so it's optional
-  valgrind "$f"
+  valgrind "$f" >> /logs/results_output.txt 2>&1
 done

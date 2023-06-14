@@ -7,7 +7,7 @@
 ## Quick start
 
     $ sudo docker build -t app .
-    $ sudo docker run app
+    $ sudo docker run -v <path/to/results>:/logs app
 
 This code will profile `sample.cpp` file.
 
