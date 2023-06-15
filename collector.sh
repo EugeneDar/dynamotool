@@ -19,3 +19,12 @@ cd /fmt && mkdir build && cd build
 cmake ..
 make
 cp /fmt/build/bin/* /materials
+
+
+
+# build tests for 'leveldb' repo
+cd /leveldb && mkdir -p build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
+cp /leveldb/build/db_bench /materials
+cp /leveldb/build/c_test /materials
+cp /leveldb/build/env_posix_test /materials
