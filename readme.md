@@ -9,13 +9,19 @@
     $ sudo docker build -t app .
     $ sudo docker run -v <path/to/results>:/logs app
 
-This code will profile `sample.cpp` file.
+This code will profile `sample.cpp` file and generate `data.csv` file in the specified directory.
 
 The `fmt` repository example in the `collector.sh` script is simply a demonstration of what can be done with the script. By uncommenting that section and repeating the previous steps, you can include the `fmt` repository in the profiling process.
 
 ## More tests
 
 To profile additional repositories, simply add their installation instructions to the Dockerfile. In `collector.sh` implement test builds, and place the resulting binary files into the `/materials` directory.
+
+## Visualization
+
+To visualize the results, run following command:
+
+    $ python3 painter.py
 
 ## Explanation
 
