@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import norm
 
 
 def remove_outliers(data, threshold=3):
@@ -27,34 +28,39 @@ def read_percentages_from_file(file_path):
     return percentages
 
 
-def plot_ecdf(percentages):
+def plot_ecdf(data):
     x = np.sort(data)
     y = np.arange(1, len(x) + 1) / len(x)
 
-    # Создание графика
     fig, ax = plt.subplots()
 
     ax.plot(x, y, marker='o', linestyle='-', color='blue')
-    ax.set_xlabel('Проценты')
-    ax.set_ylabel('Вероятность')
-    ax.set_title('Поточечная функция распределения')
+    ax.set_xlabel('Percentages')
+    ax.set_ylabel('Probability')
+    ax.set_title('Empirical Cumulative Distribution Function')
 
-    # Добавление вертикальной прямой для отображения среднего значения
     mean_value = np.mean(x)
-    ax.axvline(x=mean_value, color='red', linestyle='--', label='Среднее: {:.2f}'.format(mean_value))
+    ax.axvline(x=mean_value, color='red', linestyle='--', label='Mean: {:.2f}'.format(mean_value))
 
-    # Добавление информации о среднем и среднеквадратичном отклонении в левый верхний угол графика
-    textstr = '\n'.join(('Среднее: {:.2f}'.format(mean_value),
-                         'Стандартное отклонение: {:.2f}'.format(np.std(x))))
+    textstr = '\n'.join(('Mean: {:.2f}'.format(mean_value),
+                         'Standard Deviation: {:.2f}'.format(np.std(x))))
     props = dict(boxstyle='round', facecolor='white', edgecolor='gray')
     ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=10,
             verticalalignment='top', horizontalalignment='left', bbox=props)
 
-    # Отображение графика
+    mu = np.mean(x)
+    sigma = np.std(x)
+    xmin, xmax = ax.get_xlim()
+    x_range = np.linspace(xmin, xmax, 100)
+    cdf = norm.cdf(x_range, mu, sigma)
+    ax.plot(x_range, cdf, color='green')
+
+    ax.legend(['Empirical CDF', 'Mean', 'Normal Distribution'], loc='lower right')
+
     plt.show()
 
 
-file_path = 'data.csv'  # Путь к вашему файлу данных
+file_path = 'data.csv'
 data = read_percentages_from_file(file_path)
 data = remove_outliers(data)
 plot_ecdf(data)
