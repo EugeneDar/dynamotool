@@ -19,9 +19,9 @@ foo() {
             heap_frees=$(echo "$line" | awk '{print $(NF-4)}' | tr -d ',')
             heap_bytes_allocated=$(echo "$line" | awk '{print $(NF-2)}' | tr -d ',')
 
-            percentage=$(echo "scale=5; ($heap_allocations * 100.0) / ($heap_allocations + $stack_allocations)" | bc)
+            percentage=$(awk "BEGIN {printf \"%.5f%%\", ($heap_allocations * 100.0) / ($heap_allocations + $stack_allocations)}")
 
-            echo "$file_name,$stack_allocations,$heap_allocations,$heap_frees,$heap_bytes_allocated,$percentage%" >> "$output_path"
+            echo "$file_name,$stack_allocations,$heap_allocations,$heap_frees,$heap_bytes_allocated,$percentage" >> "$output_path"
 
             file_name=""
             stack_allocations=""
