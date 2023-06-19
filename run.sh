@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # set system variable
 DYNAMORIO_HOME=/DynamoRIO-Linux-9.0.1
 
@@ -38,4 +40,4 @@ done
 
 
 # parse logs
-python3 parser.py > /logs/data.csv
+bash /parser.sh /logs/log.txt /logs/result.csv
