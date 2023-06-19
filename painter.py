@@ -60,7 +60,7 @@ def plot_ecdf(data):
     plt.show()
 
 
-file_path = 'data.csv'
+file_path = 'result.csv'
 data = read_percentages_from_file(file_path)
 data = remove_outliers(data)
 plot_ecdf(data)
