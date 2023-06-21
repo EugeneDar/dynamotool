@@ -24,18 +24,17 @@ bash /collector.sh
 
 
 
-# run profiler for built tests
 echo "" > /logs/log.txt
 cd /DynamoRIO-Linux-9.0.1
-FILES="/materials/*"
-for f in $FILES
-do
-  echo "Profiling file $f" >> /logs/log.txt
-  bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$f" >> /logs/log.txt
+while IFS= read -r test_name; do
+  if [[ -n "$test_name" ]]; then
+      echo "Profiling file $test_name" >> /logs/log.txt
+      bin64/drrun -c /dynamorio/build/bin/libmy_profiler.so -only_from_app -- "$test_name" >> /logs/log.txt
 
-  # this line profiles binary for heap allocations, and it uses valgrind
-  valgrind "$f" >> /logs/log.txt 2>&1
-done
+      # this line profiles binary for heap allocations, and it uses valgrind
+      valgrind "$test_name" >> /logs/log.txt 2>&1
+  fi
+done < /logs/materials.txt
 
 
 

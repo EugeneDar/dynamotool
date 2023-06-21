@@ -24,6 +24,7 @@ RUN tar -xvzf DynamoRIO-Linux-9.0.1.tar.gz
 RUN git clone https://github.com/fmtlib/fmt.git
 RUN git clone --recurse-submodules https://github.com/google/leveldb.git
 RUN git clone https://github.com/gabime/spdlog.git
+RUN git clone https://github.com/openssl/openssl.git
 
 COPY . .
 

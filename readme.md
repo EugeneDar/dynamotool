@@ -11,11 +11,11 @@
 
 This code will profile `sample.cpp` file and generate `data.csv` file in the specified directory.
 
-The `fmt` repository example in the `collector.sh` script is simply a demonstration of what can be done with the script. By uncommenting that section and repeating the previous steps, you can include the `fmt` repository in the profiling process.
+The `fmt`, `leveldb`, `spdlog` and `openssl` repositories examples in the `collector.sh` script are simply demonstrations of what can be done with the script. By uncommenting those sections and repeating the previous steps, you can include those repositories in the profiling process.
 
 ## More tests
 
-To profile additional repositories, simply add their installation instructions to the Dockerfile. In `collector.sh` implement test builds, and place the resulting binary files into the `/materials` directory.
+To profile additional repositories, simply add their installation instructions to the Dockerfile. In `collector.sh` implement test builds, and place the resulting binary files paths into the `/logs/materials.txt` file.
 
 ## Visualization
 
