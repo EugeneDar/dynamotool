@@ -28,3 +28,12 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
 cp /leveldb/build/db_bench /materials
 cp /leveldb/build/c_test /materials
 cp /leveldb/build/env_posix_test /materials
+
+
+
+# build tests for 'spdlog' repo
+cd /spdlog && mkdir build && cd build
+cmake -DSPDLOG_BUILD_TESTS=ON ..
+cmake --build .
+cp /spdlog/build/tests/spdlog-utests /materials
+cp /spdlog/build/example/example /materials
